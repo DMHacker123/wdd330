@@ -257,6 +257,20 @@ button {
   }
 }
 
+.cart_footer {
+  display: none;
+}
+
+.cart_footer_show {
+  display: block;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.cart_footer_show h3 {
+  grid-column: 2/3;
+}
+
 footer {
   font-size: var(--small-font);
   padding: 1em;
