@@ -257,6 +257,7 @@ button {
   }
 }
 
+<<<<<<< HEAD
 .cart_footer {
   display: none;
 }
@@ -271,6 +272,8 @@ button {
   grid-column: 2/3;
 }
 
+=======
+>>>>>>> origin/main
 footer {
   font-size: var(--small-font);
   padding: 1em;

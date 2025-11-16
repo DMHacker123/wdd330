@@ -7,6 +7,7 @@ export function qs(selector, parent = document) {
 
 // retrieve data from localstorage
 export function getLocalStorage(key) {
+<<<<<<< HEAD
   try {
     const data = localStorage.getItem(key);
     return data ? JSON.parse(data) : [];
@@ -14,6 +15,9 @@ export function getLocalStorage(key) {
     console.error("Error parsing localStorage data", e);
     return [];
   }
+=======
+  return JSON.parse(localStorage.getItem(key));
+>>>>>>> origin/main
 }
 // save data to local storage
 export function setLocalStorage(key, data) {
@@ -27,6 +31,7 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+<<<<<<< HEAD
 
 export function getParam(param) {
   const queryString = window.location.search;
@@ -42,3 +47,5 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+=======
+>>>>>>> origin/main

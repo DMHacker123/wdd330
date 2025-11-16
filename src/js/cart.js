@@ -3,7 +3,10 @@ import { getLocalStorage } from "./utils.mjs";
 function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
+<<<<<<< HEAD
   cartItemTotalCost(cartItems);
+=======
+>>>>>>> origin/main
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
 }
 
@@ -26,6 +29,7 @@ function cartItemTemplate(item) {
   return newItem;
 }
 
+<<<<<<< HEAD
 function cartItemTotalCost(cartItems) {
   let total = 0;
   cartItems.forEach((item) => {
@@ -39,4 +43,6 @@ function cartItemTotalCost(cartItems) {
   classTotalShow.classList.toggle("cart_footer_show");
 }
 
+=======
+>>>>>>> origin/main
 renderCartContents();
