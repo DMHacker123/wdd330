@@ -1,35 +1,62 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Carrito</title>
-
-  <link rel="stylesheet" href="styles/styles.css">
+  <title>Mi Carrito</title>
+  <link rel="stylesheet" href="../styles/cart.css">
 </head>
-
 <body>
   <header>
-    <nav>
-      <a href="/cart/index.html" class="cart-icon" aria-label="Ver carrito">
-        <img src="images/backpack-icon.svg" alt="Carrito / mochila" width="32" height="32">
-        <span id="cart-count" class="cart-count" aria-live="polite">0</span>
-      </a>
-    </nav>
+    <h1>Carrito de Compras</h1>
   </header>
 
   <main>
-    <section class="product">
-      <h3>Hamaca de prueba</h3>
-      <p>Precio: $25</p>
-      <button class="add-to-cart" data-id="hamaca-001" data-name="Hamaca de prueba" data-price="25">
-        Añadir al carrito
-      </button>
-    </section>
+    <section id="cart-items"></section>
   </main>
 
-  <script src="scripts/cart.js"></script>
-</body>
+  <script src="../scripts/cart.js"></script>
+  <script>
+    // Renderiza los productos del carrito
+    function renderCart() {
+      const cart = getCart();
+      const container = document.getElementById("cart-items");
+      container.innerHTML = "";
 
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Tu carrito está vacío.</p>";
+        return;
+      }
+
+      cart.forEach(item => {
+        const div = document.createElement("div");
+        div.className = "cart-item";
+        div.innerHTML = `
+          <h3>${item.name}</h3>
+          <p>Precio: $${item.price}</p>
+          <p>Cantidad: ${item.quantity}</p>
+          <button class="qty-btn" data-id="${item.id}" data-action="add">+</button>
+          <button class="qty-btn" data-id="${item.id}" data-action="remove">-</button>
+        `;
+        container.appendChild(div);
+      });
+
+      // Conectar botones + y -
+      document.querySelectorAll(".qty-btn").forEach(btn => {
+        btn.addEventListener("click", e => {
+          const id = e.currentTarget.dataset.id;
+          const action = e.currentTarget.dataset.action;
+          if (action === "add") {
+            addToCart({ id, name: "", price: 0, quantity: 1 });
+          } else {
+            removeFromCart(id, 1);
+          }
+          renderCart(); // refrescar vista
+        });
+      });
+    }
+
+    document.addEventListener("DOMContentLoaded", renderCart);
+  </script>
+</body>
 </html>

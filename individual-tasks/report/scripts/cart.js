@@ -1,8 +1,3 @@
-/* cart.js
-   Implementa: getCart, saveCart, updateCartCount, addToCart, removeFromCart
-   Usa localStorage bajo la llave "so-cart" (Sleep Outside cart)
-*/
-
 const CART_KEY = "so-cart";
 
 /* Devuelve array de items: [{ id, name, price, quantity }] */
@@ -20,10 +15,9 @@ function saveCart(cart) {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-/* Actualiza el badge con el total de items (sum of quantities) */
+/* Actualiza el badge con el total de items */
 function updateCartCount() {
   const cart = getCart();
-  // contar cantidad total (suma de quantities)
   const total = cart.reduce((acc, item) => acc + (item.quantity || 0), 0);
   const el = document.querySelector("#cart-count");
   if (!el) return;
@@ -37,7 +31,7 @@ function updateCartCount() {
   }
 }
 
-/* Añade 1 unidad del producto al carrito (por id). Si existe, suma 1 a quantity */
+/* Añade producto */
 function addToCart({ id, name, price, quantity = 1 }) {
   const cart = getCart();
   const existing = cart.find(item => item.id === id);
@@ -50,13 +44,12 @@ function addToCart({ id, name, price, quantity = 1 }) {
   updateCartCount();
 }
 
-/* Remueve un producto del carrito (por id) o reduce cantidad */
+/* Remueve producto o reduce cantidad */
 function removeFromCart(id, qty = 0) {
   let cart = getCart();
   const idx = cart.findIndex(item => item.id === id);
   if (idx === -1) return;
   if (qty <= 0 || cart[idx].quantity <= qty) {
-    // eliminar elemento
     cart.splice(idx, 1);
   } else {
     cart[idx].quantity -= qty;
@@ -65,25 +58,18 @@ function removeFromCart(id, qty = 0) {
   updateCartCount();
 }
 
-/* --- Inicialización y binding de botones "Añadir al carrito" --- */
+/* Inicialización */
 document.addEventListener("DOMContentLoaded", () => {
-  // Actualizar badge al cargar la página
   updateCartCount();
-
-  // conectar botones con clase .add-to-cart (ejemplo)
   document.querySelectorAll(".add-to-cart").forEach(btn => {
     btn.addEventListener("click", (e) => {
       const el = e.currentTarget;
-      const id = el.dataset.id;
-      const name = el.dataset.name;
-      const price = el.dataset.price;
-      if (!id) {
-        console.warn("Botón add-to-cart sin data-id");
-        return;
-      }
-      addToCart({ id, name, price, quantity: 1 });
-
-      // feedback visual rápido (opcional)
+      addToCart({
+        id: el.dataset.id,
+        name: el.dataset.name,
+        price: el.dataset.price,
+        quantity: 1
+      });
       btn.textContent = "Añadido ✓";
       setTimeout(() => btn.textContent = "Añadir al carrito", 1200);
     });

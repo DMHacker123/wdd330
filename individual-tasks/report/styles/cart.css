@@ -1,0 +1,36 @@
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 1rem 0;
+}
+
+.cart-item h3 {
+  margin: 0 0 0.5rem;
+}
+
+.cart-item p {
+  margin: 0.25rem 0;
+}
+
+.qty-btn {
+  margin: 0.25rem;
+  padding: 0.5rem 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.qty-btn[data-action="add"] {
+  background-color: #2a9d8f;
+  color: #fff;
+}
+
+.qty-btn[data-action="remove"] {
+  background-color: #e63946;
+  color: #fff;
+}
+
+.qty-btn:hover {
+  opacity: 0.85;
+}
