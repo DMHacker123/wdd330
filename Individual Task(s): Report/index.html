@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrito</title>
+
+  <link rel="stylesheet" href="styles/styles.css">
+</head>
+
+<body>
+  <header>
+    <nav>
+      <a href="/cart/index.html" class="cart-icon" aria-label="Ver carrito">
+        <img src="images/backpack-icon.svg" alt="Carrito / mochila" width="32" height="32">
+        <span id="cart-count" class="cart-count" aria-live="polite">0</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="product">
+      <h3>Hamaca de prueba</h3>
+      <p>Precio: $25</p>
+      <button class="add-to-cart" data-id="hamaca-001" data-name="Hamaca de prueba" data-price="25">
+        Añadir al carrito
+      </button>
+    </section>
+  </main>
+
+  <script src="scripts/cart.js"></script>
+</body>
+
+</html>
