@@ -1,7 +1,9 @@
+// vite.config.js
 import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
+  base: '/wdd330/', // <-- your repository name
   build: {
     rollupOptions: {
       input: {
