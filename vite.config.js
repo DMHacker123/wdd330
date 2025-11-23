@@ -3,7 +3,7 @@ import { defineConfig } from 'vite';
 import path from 'path';
 
 export default defineConfig({
-  base: '/wdd330/', // <-- your repository name
+  base: '/wdd330/',  // <-- your repo name
   build: {
     rollupOptions: {
       input: {
