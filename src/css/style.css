@@ -311,3 +311,87 @@ footer {
   border-top: 1px solid var(--tertiary-color);
   padding: 1em;
 }
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem;
+}
+
+.product-card {
+  position: relative;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+.product-card img {
+  max-width: 150px;
+  margin-bottom: 0.75rem;
+}
+
+.price {
+  margin-top: 0.5rem;
+}
+
+.price .final {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.price .retail {
+  text-decoration: line-through;
+  color: #777;
+  margin-left: 6px;
+}
+
+.discount-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  background: #e63946;
+  color: #fff;
+  padding: 4px 8px;
+  font-size: 0.8rem;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+#productList {
+  list-style: none;
+  padding: 0;
+}
+
+#productList li {
+  padding: 0.8rem 0;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.product-name {
+  font-weight: bold;
+}
+
+.product-prices {
+  margin-left: 1rem;
+}
+
+.retail-price {
+  text-decoration: line-through;
+  color: gray;
+  margin-left: 0.5rem;
+}
+
+.discount-badge {
+  margin-left: 0.5rem;
+  padding: 2px 6px;
+  background-color: red;
+  color: white;
+  font-size: 0.8rem;
+  border-radius: 4px;
+}
